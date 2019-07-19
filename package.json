@@ -1,0 +1,27 @@
+{
+  "name": "prediction_heaven",
+  "version": "1.0.0",
+  "description": "Sports Prediction",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yazew/yazew.git"
+  },
+  "keywords": [
+    "Yaz",
+    "Yazew",
+    "Prediction",
+    "Heaven",
+    "Sports",
+    "Prediction"
+  ],
+  "author": "Yaz Team <predictionheaven@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yazew/yazew/issues"
+  },
+  "homepage": "https://github.com/yazew/yazew#readme"
+}
