@@ -62,4 +62,4 @@ typings/
 locals
 .babelrc
 dist/*.js
-dist/*
+dist
