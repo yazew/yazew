@@ -61,4 +61,5 @@ typings/
 .next
 locals
 .babelrc
-dist/**/*
+dist/*.js
+dist/**
