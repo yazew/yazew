@@ -1,15 +1,17 @@
 const path = require('path')
+const os = require('os')
 const express = require('express')
 const webapp = express()
 const bodyParser = require('body-parser')
 const rp = require('request-promise-native')
 const ejs = require('ejs')
-
+const host = os.hostname()
 webapp.set('view engine', 'ejs')
 webapp.set('views',path.resolve('src/views'))
 webapp.get('/',(req, res) => {
+  let fullUrl = req.protocol + '://' + req.get('host')
   let options = {
-    url: 'http://localhost:5000/api/tips/free',
+    url: [fullUrl,'api/tips/free'].join('/'),
     method: 'GET',
     json: true
   }
@@ -23,11 +25,13 @@ webapp.get('/',(req, res) => {
   })
 })
 webapp.get('/vip', (req, res) => {
+  let fullUrl = req.protocol + '://' + req.get('host')
   let options = {
-    url: 'http://localhost:5000/api/tips/vip',
+    url: [fullUrl,'api/tips/free'].join('/'),
     method: 'GET',
     json: true
   }
+  console.log(options)
   rp(options).then(data => {
     res.render('vip_tips.html.ejs', { tips: data})
   })

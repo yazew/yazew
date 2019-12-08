@@ -2,6 +2,8 @@
 
 var path = require('path');
 
+var os = require('os');
+
 var express = require('express');
 
 var webapp = express();
@@ -12,11 +14,13 @@ var rp = require('request-promise-native');
 
 var ejs = require('ejs');
 
+var host = os.hostname();
 webapp.set('view engine', 'ejs');
 webapp.set('views', path.resolve('src/views'));
 webapp.get('/', function (req, res) {
+  var fullUrl = req.protocol + '://' + req.get('host');
   var options = {
-    url: 'http://localhost:5000/api/tips/free',
+    url: [fullUrl, 'api/tips/free'].join('/'),
     method: 'GET',
     json: true
   };
@@ -37,11 +41,13 @@ webapp.get('/', function (req, res) {
   });
 });
 webapp.get('/vip', function (req, res) {
+  var fullUrl = req.protocol + '://' + req.get('host');
   var options = {
-    url: 'http://localhost:5000/api/tips/vip',
+    url: [fullUrl, 'api/tips/free'].join('/'),
     method: 'GET',
     json: true
   };
+  console.log(options);
   rp(options).then(function (data) {
     res.render('vip_tips.html.ejs', {
       tips: data
