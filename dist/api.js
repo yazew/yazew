@@ -19,13 +19,14 @@ api.get('/', function (req, res) {
   });
 });
 api.get('/tips/free', function (req, res) {
-  var start = moment(new Date().toISOString()).toDate();
-  var end = moment(start.toISOString()).add(2, 'weeks').toDate();
+  var today = new Date();
+  var start = moment(today.toISOString()).subtract(2, 'weeks').toDate();
+  var end = moment(today.toISOString()).add(2, 'weeks').toDate();
   var fixture = {
-    team1: 'Seid FC',
-    team2: 'Yared FC',
-    description: 'Seid FC vs Yared FC',
-    time: momentRandom(end, start),
+    team1: 'FC ',
+    team2: 'FC ',
+    description: 'FC A vs FC B',
+    time: momentRandom(end, start).toDate(),
     tip: '1X',
     result: '2',
     free: true
@@ -40,22 +41,28 @@ api.get('/tips/free', function (req, res) {
     match.tip = i % 15 == 0 ? '1X' : 'X2';
     match.output = i % 20 == 0 ? '1X' : 'X2';
     match.result = match.output === '1X' ? 3 * i % 7 + ' : ' + 0 : 0 + ' : ' + 3 * i % 7;
-    match.time = momentRandom(end, start);
+    match.time = momentRandom(end, start).toDate();
     match.free = i % 20 == 0 ? true : false;
-    tips.push(match);
+    match.visible = match.time <= Date.now();
+    match.match_is_today = match.time.toDateString() === new Date().toDateString() ? 'YES' : 'NO';
+
+    if (match.free) {
+      tips.push(match);
+    }
   }
 
   res.set('Content-Type', 'text/html');
   res.status(200).json(tips);
 });
 api.get('/tips/vip', function (req, res) {
-  var start = moment(new Date().toISOString()).toDate();
-  var end = moment(start.toISOString()).add(2, 'weeks').toDate();
+  var today = new Date();
+  var start = moment(today.toISOString()).subtract(2, 'weeks').toDate();
+  var end = moment(today.toISOString()).add(2, 'weeks').toDate();
   var fixture = {
-    team1: 'Seid FC',
-    team2: 'Yared FC',
-    description: 'Seid FC vs Yared FC',
-    time: momentRandom(end, start),
+    team1: 'FC ',
+    team2: 'FC ',
+    description: 'FC A vs FC B',
+    time: momentRandom(end, start).toDate(),
     tip: '1X',
     result: '2',
     free: true
@@ -70,11 +77,10 @@ api.get('/tips/vip', function (req, res) {
     match.tip = i % 15 == 0 ? '1X' : 'X2';
     match.output = i % 20 == 0 ? '1X' : 'X2';
     match.result = match.output === '1X' ? 3 * i % 7 + ' : ' + 0 : 0 + ' : ' + 3 * i % 7;
-    match.time = momentRandom(end, start);
+    match.time = momentRandom(end, start).toDate();
     match.free = i % 20 == 0 ? true : false;
     match.visible = match.time <= Date.now();
     match.match_is_today = match.time.toDateString() === new Date().toDateString() ? 'YES' : 'NO';
-    console.log(match);
     tips.push(match);
   }
 

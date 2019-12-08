@@ -38,7 +38,7 @@ webapp.get('/', function (req, res) {
 });
 webapp.get('/vip', function (req, res) {
   var options = {
-    url: 'http://localhost:5000/api/tips/free',
+    url: 'http://localhost:5000/api/tips/vip',
     method: 'GET',
     json: true
   };
@@ -48,7 +48,7 @@ webapp.get('/vip', function (req, res) {
     });
   })["catch"](function (error) {
     res.render('error.html.ejs', {
-      error: error
+      error: error.message
     });
   });
 });
