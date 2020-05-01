@@ -12,7 +12,9 @@
     "build": "npm run clean && npm run transpile",
     "start": "nodemon ./dist/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -49,11 +51,13 @@
     "pug": "^2.0.4",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5"
-  }
+  },
+  "snyk": true
 }
