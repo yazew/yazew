@@ -46,7 +46,7 @@
     "nodemon": "^2.0.1",
     "object.fromentries": "^2.0.0",
     "pg": "^7.11.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "winston": "^3.2.1"
