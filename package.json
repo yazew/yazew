@@ -39,7 +39,7 @@
     "express-validator": "^6.1.1",
     "helmet": "^3.21.2",
     "i18n-express": "^1.1.3",
-    "knex": "^0.20.3",
+    "knex": "^0.95.0",
     "moment": "^2.24.0",
     "moment-random": "^1.0.5",
     "node-polyglot": "^2.3.1",
